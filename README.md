@@ -23,9 +23,9 @@ experiments
 |--label_map.pbtxt
 |--model_main_tf2.py
 ```
-_* `model_main_tf2.py` to train or evaluate a model.
-_* `exporter_main_v2.py` to convert trained model to a more compact inference model.
-_* `label_map.pbtxt` 
+ * `model_main_tf2.py` to train or evaluate a model.
+ * `exporter_main_v2.py` to convert trained model to a more compact inference model.
+ * `label_map.pbtxt` 
 * `video` folder stores both resultant inference video from both reference model and improved model.
 * `plots` contains tensorboard plots.
 * `images` contains images for this README.md file
@@ -252,12 +252,12 @@ Tensorboard plots for the reference model are shown below:
 </p>
 with a learning plotted below:
 <p align="center">
-  <img src="plots/reference_plots/1_lr.png" width="30%"/>
+  <img src="plots/reference_plots/1_lr.png" width="25%"/>
 </p>
 we observed that as the learning rate increases from initial value of 0.013333 to about 0.04, the loss increases steeply. The loss decreases along with decaying learning rate.
 
 <p align="center">
-  <img src="plots/reference_plots/1_precision.png" width="50%"/>
+  <img src="plots/reference_plots/1_precision.png" width="70%"/>
 </p>
 From the precision curve, we learn that the model did not learn anything useful until after 8000 steps. These prompts us to improve the reference model to increase its accuracy.
 
@@ -276,16 +276,16 @@ The resulting improved plots are given below:
 </p>
 2) Precision
 <p align="center">
-  <img src="plots/improved_plots/2_precision.png" width="30%"/>
+  <img src="plots/improved_plots/2_precision.png" width="70%"/>
 </p>
 3) Recall
 <p align="center">
-  <img src="plots/improved_plots/2_recall.png" width="50%"/>
+  <img src="plots/improved_plots/2_recall.png" width="70%"/>
 </p>
 Comparisons can be made by viewing the inference videos available under `video`. The images below illustrate the improvement of inference accuracy.
 <p align="center">
-  <img src="images/reference.png" width="50%"/>
+  <img src="images/reference.png" width="40%"/>
 </p>
 <p align="center">
-  <img src="images/improved.png" width="50%"/>
+  <img src="images/improved.png" width="40%"/>
 </p>
