@@ -203,7 +203,7 @@ item {
 as provided in `label_map.pbtxt`.
 In the `Exploratory Data Analysis` notebook, we display camera images with the corresponding annotations. An example of such image is shown below:
 <p align="center">
-  <img src="images/eda.png" width="50%"/>
+  <img src="images/eda.png" width="40%"/>
 </p>
 The codes for displaying images are as below:
 
