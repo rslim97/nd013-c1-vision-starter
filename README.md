@@ -162,9 +162,13 @@ docker exec -it <container-id> bash
 where `<container-id>` is the id of the currently running container, which can be checked using:
 `docker ps -a`
 launch the evaluation process simultaneously with training process, by entering:
-`CUDA_VISIBLE_DEVICES="" python /app/project/experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config --checkpoint_dir=experiments/reference/`
+```
+CUDA_VISIBLE_DEVICES="" python /app/project/experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config --checkpoint_dir=experiments/reference/
+```
 To view tensorboard, open another new terminal running in the same docker id as described previously and enter:
-`python -m tensorboard.main --logdir /app/project/experiments/reference/`
+```
+python -m tensorboard.main --logdir /app/project/experiments/reference/
+```
 
 Improve the model by editing the the `pipeline_new.config` file. To do so in Sublime text editor, we need the power as a root user:
 `sudo subl pipeline_new.config`
