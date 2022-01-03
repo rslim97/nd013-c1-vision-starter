@@ -139,8 +139,10 @@ def create_tf_example(filename, encoded_jpeg, annotations, resize=True):
 The Tf Object Detection API relies on config files. The config that we will use for reference is `pipeline.config`, which is the config for a SSD Resnet 50 640x640 model. The [pretrained model](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz) was placed under `app/project/experiments/pretrained_model`. The paper for Single Shot Detector can be read [here](https://arxiv.org/pdf/1512.02325.pdf). Other architectures can be viewed in the Tf Object Detection API [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). 
 
 We neet to edit the config files to change the location of the training and validation files, as well as the location of the label_map file, pretrained weights. We also need to adjust the batch size. To do so, run:
-`python edit_config.py --train_dir /app/project/data/train --eval_dir /app/project/data/val --batch_size 2 --checkpoint /app/project/experiments/pretrained_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint/ckpt-0 --label_map /app/project/experiments/label_map.pbtxt`
 
+```
+python edit_config.py --train_dir /app/project/data/train --eval_dir /app/project/data/val --batch_size 2 --checkpoint /app/project/experiments/pretrained_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint/ckpt-0 --label_map /app/project/experiments/label_map.pbtxt
+```
 A new config file will be created, `pipeline_new.config`. This new config file can be placed to the `/app/project/experiments/reference` folder.
 
 #### Model training and evaluation
@@ -170,9 +172,13 @@ Similar training commands as the reference model can be used to training the imp
 
 #### Export model
 After the training has finished, export the trained model by running:
-`python /app/project/experiments/exporter_main_v2.py --input_type image_tensor --pipeline_config_path experiments/reference/pipeline_new.config --trained_checkpoint_dir experiments/reference/ --output_directory experiments/reference/exported/`
+```
+python /app/project/experiments/exporter_main_v2.py --input_type image_tensor --pipeline_config_path experiments/reference/pipeline_new.config --trained_checkpoint_dir experiments/reference/ --output_directory experiments/reference/exported/
+```
 Finally a short video of the model inference for any tf record file can be generated, as an example:
-`python /app/project/inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/reference/exported/saved_model --tf_record_path /app/project/data/test/segment-10212406498497081993_5300_000_5320_000_with_camera_labels.tfrecord --config_path experiments/reference/pipeline_new.config --output_path animation.mp4`
+```
+python /app/project/inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/reference/exported/saved_model --tf_record_path /app/project/data/test/segment-10212406498497081993_5300_000_5320_000_with_camera_labels.tfrecord --config_path experiments/reference/pipeline_new.config --output_path animation.mp4
+```
 
 ### Dataset
 #### Dataset analysis
@@ -229,7 +235,7 @@ def display_instances(batch):
 Additional insight to the dataset can be obtained through a function that displays information across tf records data struct, such as this:
 
 <p align="center">
-  <img src="images/additional_eda.png" width="25%"/>
+  <img src="images/additional_eda_1.png" width="50%"/>
 </p>
 
 #### Cross validation
@@ -239,16 +245,16 @@ We split the dataset to train, val, and test data by commonly used ratios of 0.8
 #### Reference experiment
 Tensorboard plots for the reference model are shown below:
 <p align="center">
-  <img src="plots/reference/1_loss" width="25%"/>
+  <img src="plots/reference_plots/1_loss.png" width=50%"/>
 </p>
 with a learning plotted below:
 <p align="center">
-  <img src="plots/reference/1_lr" width="25%"/>
+  <img src="plots/reference_plots/1_lr.png" width="50%"/>
 </p>
 we observed that as the learning rate increases from initial value of 0.013333 to about 0.04, the loss increases steeply. The loss decreases along with decaying learning rate.
 
 <p align="center">
-  <img src="plots/reference/1_precision" width="25%"/>
+  <img src="plots/reference_plots/1_precision.png" width="50%"/>
 </p>
 From the precision curve, we learn that the model did not learn anything useful until after 8000 steps. These prompts us to improve the reference model to increase its accuracy.
 
@@ -263,20 +269,20 @@ As per the [SSD](https://arxiv.org/pdf/1512.02325.pdf) paper, random crop was ut
 The resulting improved plots are given below:
 1) Loss curves
 <p align="center">
-  <img src="plots/reference/2_loss" width="25%"/>
+  <img src="plots/improved_plots/2_loss.png" width="50%"/>
 </p>
 2) Precision
 <p align="center">
-  <img src="plots/reference/2_precision" width="25%"/>
+  <img src="plots/improved_plots/2_precision.png" width="50%"/>
 </p>
 3) Recall
 <p align="center">
-  <img src="plots/reference/2_recall" width="25%"/>
+  <img src="plots/improved_plots/2_recall.png" width="50%"/>
 </p>
 Comparisons can be made by viewing the inference videos available under `video`. The images below illustrate the improvement of inference accuracy.
 <p align="center">
-  <img src="images/reference" width="25%"/>
+  <img src="images/reference.png" width="50%"/>
 </p>
 <p align="center">
-  <img src="images/improved" width="25%"/>
+  <img src="images/improved.png" width="50%"/>
 </p>
