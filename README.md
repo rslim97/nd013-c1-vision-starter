@@ -292,9 +292,13 @@ docker start  `docker ps -q -l` # restart it in the background
 docker attach `docker ps -q -l` # reattach the terminal & stdin
 ```
 To train the reference model, run:
-`python /app/project/experiments/model_main_tf2.py --model_dir=experiments/reference --pipeline_config_path=experiments/reference/pipeline_new.config`
+```
+python /app/project/experiments/model_main_tf2.py --model_dir=experiments/reference --pipeline_config_path=experiments/reference/pipeline_new.config
+```
 Open a new terminal and run:
-`docker exec -it <container-id> bash`
+```
+docker exec -it <container-id> bash
+```
 where `<container-id>` is the id of the currently running container, which can be checked using:
 `docker ps -a`
 launch the evaluation process simultaneously with training process, by entering:
@@ -331,14 +335,15 @@ item {
     name: 'cyclist'
 }
 ```
+
 as provided in `label_map.pbtxt`.
 In the `Exploratory Data Analysis` notebook, we display camera images with the corresponding annotations. An example of such image is shown below:
 <p align="center">
-  <img src="images/eda.png" width="25%"/>
+  <img src="images/eda.png" width="50%"/>
 </p>
 The codes for displaying images are as below:
+
 ```
-# entire dataset
 dataset=get_dataset("/app/project/data/processed/*.tfrecord")
 from matplotlib.patches import Rectangle
 %matplotlib inline
@@ -362,6 +367,7 @@ def display_instances(batch):
         ax.add_patch(rect)
     ax.axis('off')
 ```
+
 Additional insight to the dataset can be obtained through a function that displays information across tf records data struct, such as this:
 <p align="center">
   <img src="images/additional_eda.png" width="25%"/>
