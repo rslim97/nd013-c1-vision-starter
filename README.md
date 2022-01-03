@@ -138,7 +138,7 @@ def create_tf_example(filename, encoded_jpeg, annotations, resize=True):
 #### Edit the config file
 The Tf Object Detection API relies on config files. The config that we will use for reference is `pipeline.config`, which is the config for a SSD Resnet 50 640x640 model. The [pretrained model](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz) was placed under `app/project/experiments/pretrained_model`. The paper for Single Shot Detector can be read [here](https://arxiv.org/pdf/1512.02325.pdf). Other architectures can be viewed in the Tf Object Detection API [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). 
 
-We neet to edit the config files to change the location of the training and validation files, as well as the location of the label_map file, pretrained weights. We also need to adjust the batch size. To do so, run:
+We need to edit the config files to change the location of the training and validation files, as well as the location of the label_map file, pretrained weights. We also need to adjust the batch size. To do so, run:
 
 ```
 python edit_config.py --train_dir /app/project/data/train --eval_dir /app/project/data/val --batch_size 2 --checkpoint /app/project/experiments/pretrained_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint/ckpt-0 --label_map /app/project/experiments/label_map.pbtxt
