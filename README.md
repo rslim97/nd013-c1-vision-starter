@@ -8,19 +8,19 @@ This project is organized as follows:
 * `data` directory
 ```
 data
-|--processed
-|--raw
-|--test
-|--train
-|--val
+|--processed/
+|--raw/
+|--test/
+|--train/
+|--val/
 ```
 * The `pretrained_model` directory contains our downloaded SSD tf model. The `reference` directory contains `pipeline_new.config`, checkpoint files, `eval` and `train` folders containing evaluation and training events files respectively, `exported` directory containing a saved model. A similar structure applies to `improved` directory.
 * `experiments` directory
 ```
 experiments
-|--improved
-|--pretrained_model
-|--reference
+|--improved/
+|--pretrained_model/
+|--reference/
 |--exporter_main_v2.py
 |--label_map.pbtxt
 |--model_main_tf2.py
