@@ -268,7 +268,7 @@ From experimentation, using a larger batch size generally results in faster decr
 2) Lower the learning rate
 The learning rate is lowered from a base value of 0.04 to 0.002.
 3) Random crop for data augmentation
-As per the [SSD](https://arxiv.org/pdf/1512.02325.pdf) paper, random crop was utilized to increase the model's precision. Therefore, we try implementing ssd_random_crop as given in [preprocessor.proto](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/preprocessor.proto).
+As per the [SSD](https://arxiv.org/pdf/1512.02325.pdf) paper, random crop was utilized to increase the model's precision. Therefore, we try implementing ssd_random_crop as given in [preprocessor.proto](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/preprocessor.proto).<br/>
 The resulting improved plots are given below:
 
 1. Loss curves
