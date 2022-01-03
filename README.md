@@ -271,15 +271,15 @@ The learning rate is lowered from a base value of 0.04 to 0.002.
 As per the [SSD](https://arxiv.org/pdf/1512.02325.pdf) paper, random crop was utilized to increase the model's precision. Therefore, we try implementing ssd_random_crop as given in [preprocessor.proto](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/preprocessor.proto).
 The resulting improved plots are given below:
 
-1) Loss curves
+1. Loss curves
 <p align="center">
   <img src="plots/improved_plots/2_loss.png" width="70%"/>
 </p>
-2) Precision
+2. Precision
 <p align="center">
   <img src="plots/improved_plots/2_precision.png" width="70%"/>
 </p>
-3) Recall
+3. Recall
 <p align="center">
   <img src="plots/improved_plots/2_recall.png" width="70%"/>
 </p>
