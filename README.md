@@ -208,6 +208,7 @@ In the `Exploratory Data Analysis` notebook, we display camera images with the c
 The codes for displaying images are as below:
 
 ```
+# entire dataset
 dataset=get_dataset("/app/project/data/processed/*.tfrecord")
 from matplotlib.patches import Rectangle
 %matplotlib inline
@@ -236,6 +237,8 @@ Additional insight to the dataset can be obtained through a function that displa
 
 <p align="center">
   <img src="images/additional_eda_1.png" width="50%"/>
+  <img src="images/additional_eda_2.png" width="50%"/>
+  <img src="images/additional_eda_3.png" width="50%"/>
 </p>
 
 #### Cross validation
@@ -245,11 +248,11 @@ We split the dataset to train, val, and test data by commonly used ratios of 0.8
 #### Reference experiment
 Tensorboard plots for the reference model are shown below:
 <p align="center">
-  <img src="plots/reference_plots/1_loss.png" width=50%"/>
+  <img src="plots/reference_plots/1_loss.png" width=70%"/>
 </p>
 with a learning plotted below:
 <p align="center">
-  <img src="plots/reference_plots/1_lr.png" width="50%"/>
+  <img src="plots/reference_plots/1_lr.png" width="30%"/>
 </p>
 we observed that as the learning rate increases from initial value of 0.013333 to about 0.04, the loss increases steeply. The loss decreases along with decaying learning rate.
 
@@ -269,11 +272,11 @@ As per the [SSD](https://arxiv.org/pdf/1512.02325.pdf) paper, random crop was ut
 The resulting improved plots are given below:
 1) Loss curves
 <p align="center">
-  <img src="plots/improved_plots/2_loss.png" width="50%"/>
+  <img src="plots/improved_plots/2_loss.png" width="70%"/>
 </p>
 2) Precision
 <p align="center">
-  <img src="plots/improved_plots/2_precision.png" width="50%"/>
+  <img src="plots/improved_plots/2_precision.png" width="30%"/>
 </p>
 3) Recall
 <p align="center">
