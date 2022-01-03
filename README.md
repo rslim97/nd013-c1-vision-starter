@@ -5,6 +5,7 @@ In this project, we make use of tensorflow object detection API to train a custo
 This project is organized as follows:
 * `build` contains instructions to build the docker image and to run a container.
 * `download_process.py` will download original tf record files to `data/raw` before processing these files and saving them into `data/processed`. After `create_splits.py` is run, processed data will be moved into `train`,`val`, and `test` with ratios explained in a later section.
+* `data` directory
 ```
 data
 |--processed
@@ -14,6 +15,7 @@ data
 |--val
 ```
 * The `pretrained_model` directory contains our downloaded SSD tf model. The `reference` directory contains `pipeline_new.config`, checkpoint files, `eval` and `train` folders containing evaluation and training events files respectively, `exported` directory containing a saved model. A similar structure applies to `improved` directory.
+* `experiments` directory
 ```
 experiments
 |--improved
